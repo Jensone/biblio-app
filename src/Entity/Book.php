@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Repository\BookRepository;
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: BookRepository::class)]
@@ -16,7 +17,7 @@ class Book
     #[ORM\Column]
     private ?int $isbn = null;
 
-    #[ORM\Column(length: 255)]
+    #[ORM\Column(length: 150)]
     private ?string $title = null;
 
     #[ORM\Column(length: 255)]
@@ -25,8 +26,8 @@ class Book
     #[ORM\Column(length: 255)]
     private ?string $author = null;
 
-    #[ORM\Column(length: 255)]
-    private ?string $publication = null;
+    #[ORM\Column(type: Types::DATE_MUTABLE)]
+    private ?\DateTimeInterface $publication = null;
 
     public function getId(): ?int
     {
@@ -86,7 +87,7 @@ class Book
         return $this->publication;
     }
 
-    public function setPublication(string $publication): self
+    public function setPublication(\DateTimeInterface $publication): self
     {
         $this->publication = $publication;
 
