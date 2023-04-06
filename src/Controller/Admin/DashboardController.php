@@ -22,7 +22,7 @@ class DashboardController extends AbstractDashboardController
     #[Route('/admin', name: 'admin', methods: ['GET', 'POST'])]
     public function index(): Response
     {
-        return $this->render('admin_index.html.twig');
+        return $this->render('admin/index.html.twig');
 
         // Option 1. You can make your dashboard redirect to some common page of your backend
         //
